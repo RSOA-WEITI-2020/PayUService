@@ -1,0 +1,23 @@
+name: DockerBuildAndPublish
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set release version
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v1.1.0
+        with:
+          # Username used to log in to a Docker registry. If not set then no login will occur
+          username: ${{ secrets.USR }} # optional
+          # Password or personal access token used to log in to a Docker registry. If not set then no login will occur
+          password: ${{ secrets.PSW }} # optional
+          repository: rpwtouk/rosa
+          # Automatically tags the built image with the git reference as per the readme
+          tag_with_ref: true # optional
