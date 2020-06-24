@@ -10,6 +10,11 @@ python = "^3.7"
 requests = "^2.23.0"
 pytest = "^5.4.1"
 nox = "^2019.11.9"
+flask = "^1.1.2"
+pymysql = "^0.9.3"
+flask_jwt_extended = "^3.24.1"
+flask_restful = "^0.3.8"
+flask_sqlalchemy = "^2.4.3"
 
 [tool.poetry.dev-dependencies]
 
