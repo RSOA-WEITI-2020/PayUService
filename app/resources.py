@@ -67,7 +67,7 @@ class PaymentCreate(BaseResource):
 
     def create_payment_data(self, user, amount, ip):
         return {
-            "notifyUrl": "http://172.17.0.3/payment/v1/notify",
+            "notifyUrl": "https://01da6d06c3d3.ngrok.io/payment/v1/notify",
             "customerIp": ip,
             "merchantPosId": self.merch_id,
             "description": 'Quantum machine simulator worktime',
