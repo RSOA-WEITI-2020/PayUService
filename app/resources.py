@@ -73,7 +73,7 @@ class PaymentCreate(BaseResource):
             "description": 'Quantum machine simulator worktime',
             "currencyCode": "PLN",
             "totalAmount": amount*100,
-            "continueUrl": "https://google.com",
+            "continueUrl": "https://172.17.0.3",
             "buyer": {
                 "email": user.email,
                 "firstName": user.first_name,
