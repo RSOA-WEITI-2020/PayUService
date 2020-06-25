@@ -11,9 +11,6 @@ jobs:
       - uses: actions/checkout@master
       - name: Set release version
         run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
-      - name: keys
-        run: |
-          echo ${{secrets.pubk}} > ./keys/jwrRS256.key.pub
       - name: Build and push Docker images
         uses: docker/build-push-action@v1.1.0
         with:
