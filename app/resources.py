@@ -67,7 +67,7 @@ class PaymentCreate(BaseResource):
 
     def create_payment_data(self, user, amount, ip):
         return {
-            "notifyUrl": "http://51.178.84.158/v1/notify",
+            "notifyUrl": "http://172.17.0.3/payment/v1/notify",
             "customerIp": ip,
             "merchantPosId": self.merch_id,
             "description": 'Quantum machine simulator worktime',

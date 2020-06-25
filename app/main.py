@@ -2,7 +2,7 @@ import os
 from app import create_app
 
 app_dir = os.path.dirname(os.path.realpath(__file__))
-db_uri = 'mysql+pymysql://root:password@localhost/user_db'
+db_uri = 'mysql+pymysql://root:password@userdb/user_db'
 app = create_app(db_uri, app_dir + '/../keys')
 
 
