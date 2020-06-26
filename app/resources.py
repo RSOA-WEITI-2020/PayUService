@@ -30,6 +30,7 @@ import requests
 import urllib.parse
 import urllib.request
 from decimal import Decimal
+import os
 
 class BaseResource(Resource):
     __resources: MutableMapping[str, Type[Resource]] = {}
@@ -67,13 +68,13 @@ class PaymentCreate(BaseResource):
 
     def create_payment_data(self, user, amount, ip):
         return {
-            "notifyUrl": "https://01da6d06c3d3.ngrok.io/payment/v1/notify",
+            "notifyUrl": os.environ['NOTIFY_URL'],
             "customerIp": ip,
             "merchantPosId": self.merch_id,
             "description": 'Quantum machine simulator worktime',
             "currencyCode": "PLN",
             "totalAmount": amount*100,
-            "continueUrl": "http://172.17.0.3",
+            "continueUrl": os.environ['SERVICE_URL'],
             "buyer": {
                 "email": user.email,
                 "firstName": user.first_name,
