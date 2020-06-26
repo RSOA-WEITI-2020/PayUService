@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 
 
 def create_app(db_uri, keys_dir_path):
@@ -21,6 +22,8 @@ def create_app(db_uri, keys_dir_path):
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    app.config['PROPAGATE_EXCEPTIONS'] = True
+
     from extensions import (
         api,
         jwt,
@@ -37,5 +40,7 @@ def create_app(db_uri, keys_dir_path):
     import resources
     resources.BaseResource.register(api)
     api.init_app(app)
+
+    CORS(app)
 
     return app
